@@ -7,8 +7,11 @@ RUN apt-get install git -y
 RUN apt-get install vim -y
 RUN apt-get install build-essential -y
 ###############Installing the JDK and JRE ( Java) ######################
-RUN apt-get install default-jdk -y
-RUN apt-get install default-jre -y
+RUN apt-get install openjdk-11-jdk -y
+############### Setting up the Environmental Variables#################
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
+RUN export JAVA_HOME
+RUN export PATH=$PATH:$JAVA_HOME/bin
 ################Updating the Package Repository #########################
 RUN apt-get -y update && apt-get -y upgrade
 ##################Installing Wget ###########################
